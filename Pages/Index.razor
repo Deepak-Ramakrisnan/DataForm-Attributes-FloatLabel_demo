@@ -1,0 +1,83 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.DataForm;
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Buttons;
+@using System.ComponentModel.DataAnnotations
+
+            <SfDataForm ID="MyForm"
+                        Model="@EmployeeData"  ColumnCount="2" ColumnSpacing="20px"
+                         >
+                <FormValidator>
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                </FormValidator>
+                <FormItems>
+                    <FormAutoGenerateItems></FormAutoGenerateItems>
+                </FormItems>
+            </SfDataForm>
+
+@code {
+    private async Task HandleFormSubmit(EditContext editContext)
+    {
+        bool isFormValid = editContext.Validate();
+    }
+    private EmployeeDetails EmployeeData = new EmployeeDetails()
+        {
+          
+        };
+
+    public class EmployeeDetails
+    {
+        [Required]
+        [DataType(DataType.Text)]
+        public string StringField { get; set; }
+
+        [Required]
+        [DataType(DataType.MultilineText)]
+        public string MultilineTextField { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string PasswordField { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string EmailField { get; set; }
+
+        [Required]
+        [DataType(DataType.Url)]
+        public string UrlField { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumberField { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal CurrencyField { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime? DateField { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
+        public DateTime? TimeField { get; set; }
+
+        [Required]
+        [DataType(DataType.CreditCard)]
+        public string CreditCardField { get; set; }
+
+        [Required]
+        [DataType(DataType.PostalCode)]
+        public string PostalCodeField { get; set; }
+
+        [Required]
+        [DataType(DataType.Html)]
+        public string HtmlField { get; set; }
+
+        [Required]
+        [DataType(DataType.ImageUrl)]
+        public string ImageUrlField { get; set; }
+    }
+}

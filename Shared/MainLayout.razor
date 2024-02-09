@@ -1,0 +1,84 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>BlazorApp</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<style>
+    .main-grid {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 60px 1fr;
+    }
+
+    #wrapper {
+        height: 100vh;
+    }
+
+    /* content area styles */
+    #maintext.main-content {
+        height: 100%;
+        z-index: 1000;
+        background-color: #cdcdcd;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #maintext .content {
+        height: 100%;
+        overflow-y: auto;
+        margin-left: 1px;
+        margin-right: 1px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 1px;
+        padding-right: 1px;
+        font-size: 14px;
+        line-height: 1.0rem;
+    }
+
+    #maintext .error-grid {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 10% 1fr;
+        margin-top: 20px;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    /* end of content area styles */
+
+    .about-text {
+        font-size: 1.0rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        margin: 2px 0 2px 0;
+    }
+
+    .footer {
+        height: 60px;
+        width: 100%;
+        background-color: #ebebeb !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        padding-right: 20px;
+        align-items: center;
+        font-size: 1.0rem;
+    }
+</style>

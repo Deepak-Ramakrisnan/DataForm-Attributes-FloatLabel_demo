@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace BlazorApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="BlazorApp.styles.css" rel="stylesheet" />
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+    @* <link href="_content/Syncfusion.Blazor/styles/bootstrap5.css" rel="stylesheet" /> *@
+    <link href="~/css/bootstrap5.css" rel="stylesheet" />
+    @* <link href="~/css/app.css" rel="stylesheet" /> *@
+    <script src="_content/Syncfusion.Blazor//scripts/syncfusion-blazor.min.js" type="text/javascript"></script>
+    @* <link href="_content/Syncfusion.Blazor.Themes/bootstrap5.css" rel="stylesheet" />
+    <script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js" type="text/javascript"></script> *@
+    @* <link href="~/css/bootstrap5.css" rel="stylesheet" />
+    <link href="~/css/bootstrap5-dark.css" rel="stylesheet" /> *@
+
+</head>
+<body>
+    @RenderBody()
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script>
+        function JSMethod() {
+            var checkboxContainer = document.querySelector('.checkbox-container');
+            const scrollElement = document.getElementsByClassName('e-dlg-content')[0];
+            var spanElement = document.querySelector('.e-checkbox-wrapper');
+            spanElement.classList.add('e-checkbox-disabled');
+
+            checkboxContainer.addEventListener('click', function (event) {
+                if (spanElement.classList.contains('e-checkbox-disabled')) {
+                    DotNet.invokeMethodAsync('BlazorApp', 'OnAlertBtnClick')
+                } 
+            });
+
+            scrollElement.addEventListener('scroll', function (event) {
+                if (scrollElement.scrollTop + scrollElement.clientHeight >= scrollElement.scrollHeight - 1) {
+                    spanElement.classList.remove('e-checkbox-disabled');
+                } else {
+                    spanElement.classList.add('e-checkbox-disabled');
+                }
+            });
+        }
+    </script>
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

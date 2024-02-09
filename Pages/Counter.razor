@@ -1,0 +1,48 @@
+﻿@page "/counter"
+
+
+@using Syncfusion.Blazor.DataForm;
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Buttons;
+@using System.ComponentModel.DataAnnotations
+@using System.Collections
+@using System.ComponentModel
+
+<SfDataForm ID="MyForm"
+            Model="@EmployeeData" >
+    <FormValidator>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+    </FormValidator>
+    <FormItems>
+        <FormAutoGenerateItems></FormAutoGenerateItems>
+    </FormItems>
+</SfDataForm>
+
+@code {
+
+    private EmployeeDetails EmployeeData = new EmployeeDetails()
+    {
+    };
+
+    public class EmployeeDetails
+    {
+        [Display(Name = "Name")]
+        public string NameField { get; set; }
+
+        [Display(Name = "Name Field", ShortName = "Short Name")]
+        public string ShortNameField { get; set; }
+
+        [Display(Prompt = "Enter the value",Name ="Prompt Field")]
+        public string PromptField { get; set; }
+
+        [Display(AutoGenerateField = false)]
+        public string AutoGenerateField { get; set; }
+
+        [Bindable(false)]
+        public string BindableFalseField { get; set; }
+        
+        [Display(Name = "String length field")]
+        [StringLength(10,ErrorMessage ="The property should be within 5 - 10 characters",MinimumLength = 5)]
+        public string StringLengthField { get; set; }
+    }
+}
